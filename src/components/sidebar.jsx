@@ -4,7 +4,7 @@ import { data } from "../constants/data";
 const Sidebar = () => {
   return (
     <>
-      <aside className="bg-mobile absolute top-0 left-0 right-0 md:relative md:bg-desktop bg-no-repeat h-[50vh] md:h-full p-8 overflow-hidden md:rounded-xl gap-4 md:gap-0 w-screen md:w-[52%] flex flex-row md:flex-col items-start md:justify-start justify-center">
+      <aside className="bg-mobile absolute top-0 left-0 right-0 md:relative md:bg-desktop bg-no-repeat h-[50vh] md:h-full p-8 overflow-hidden md:rounded-xl gap-4 md:gap-0 w-screen md:w-[42.5%] flex flex-row md:flex-col items-start md:justify-start justify-center">
         {data.map((data, index) => {
           const { id, step, title } = data;
 
@@ -16,7 +16,7 @@ const Sidebar = () => {
                 {id}
               </div>
               <div className="hidden md:block">
-                <p className="uppercase text-secondary-coolGray text-secondary-coomdray text-sm">
+                <p className="uppercase text-secondary-lightGray text-sm font-medium">
                   {step}
                 </p>
                 <p className="uppercase text-secondary-alabaster font-medium tracking-widest">
