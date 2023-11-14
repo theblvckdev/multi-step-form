@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { data } from "../constants/data";
+import { data } from "../constants/sidebarData";
 import { GlobalContex } from "../context/globalContext";
 
 const Sidebar = () => {
