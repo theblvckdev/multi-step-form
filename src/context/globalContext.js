@@ -13,6 +13,8 @@ export const GlobalProvider = ({ children }) => {
   const [validNumber, setValidNumber] = useState(true);
   const [monthlyPlan, setMonthlyPlan] = useState(true);
   const [yearlyPlan, setYearlyPlan] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState([]);
+  const [selected, setSelected] = useState({});
 
   return (
     <GlobalContex.Provider
@@ -36,7 +38,11 @@ export const GlobalProvider = ({ children }) => {
         monthlyPlan,
         yearlyPlan,
         setMonthlyPlan,
-        setYearlyPlan
+        setYearlyPlan,
+        selectedPlan,
+        setSelectedPlan,
+        selected,
+        setSelected
       }}
     >
       {children}

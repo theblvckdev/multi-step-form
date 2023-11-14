@@ -3,7 +3,7 @@ import { plansData } from "../constants/planData";
 import { GlobalContex } from "../context/globalContext";
 
 const Plans = () => {
-  const { monthlyPlan, yearlyPlan, setMonthlyPlan, setYearlyPlan } =
+  const { monthlyPlan, yearlyPlan, setMonthlyPlan, setYearlyPlan, selectedPlan, setSelectedPlan, selected, setSelected } =
     useContext(GlobalContex);
   const [checkedBox, setCheckedBox] = useState(false);
 
@@ -17,6 +17,14 @@ const Plans = () => {
     }
     setCheckedBox(!checkedBox);
   };
+
+  const selectPlan = (id) => {
+    const planSelected = plansData.find(data => data.id === id);
+    
+    setSelectedPlan(planSelected);
+    setSelected(planSelected);
+    console.log(selectedPlan);
+  }
 
   return (
     <>
@@ -37,10 +45,11 @@ const Plans = () => {
                 monthlyFee,
                 yearlyFee,
                 monthlyFreeTrial,
+                id
               } = data;
 
               return (
-                <div className="p-4 basis-1/3 cursor-pointer duration-700 hover:border-primary-purplishBlue rounded-lg border border-secondary-lightGray">
+                <div key={index} onClick={() => selectPlan(id)} className={selected.id === id ? "p-4 basis-1/3 cursor-pointer duration-700 bg-secondary-alabaster border-primary-purplishBlue rounded-lg border" : "p-4 basis-1/3 cursor-pointer duration-700 hover:border-primary-purplishBlue rounded-lg border border-secondary-lightGray"}>
                   <div>
                     <img src={iconUrl} alt={title} />
                   </div>
@@ -74,14 +83,14 @@ const Plans = () => {
                 >
                   Monthly
                 </div>
-                <label class="cursor-pointer">
+                <label className="cursor-pointer">
                   <input
                     type="checkbox"
                     value={checkedBox}
                     onChange={handleCheck}
-                    class="sr-only peer"
+                    className="sr-only peer"
                   />
-                  <div class="w-[32px] h-[19px] bg-gray-200 rounded-full peer dark:bg-primary-marineBlue peer-checked:after:translate-x-full after:absolute after:m-[2.5px] after:bg-white after:border after:rounded-full after:h-[13px] after:w-[13px] after:transition-all peer-checked:bg-primary-marineBlue"></div>
+                  <div className="w-[32px] h-[19px] bg-gray-200 rounded-full peer dark:bg-primary-marineBlue peer-checked:after:translate-x-full after:absolute after:m-[2.5px] after:bg-white after:border after:rounded-full after:h-[13px] after:w-[13px] after:transition-all peer-checked:bg-primary-marineBlue"></div>
                 </label>
                 <div
                   className={

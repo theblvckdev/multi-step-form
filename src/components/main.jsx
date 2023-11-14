@@ -62,7 +62,7 @@ const Main = () => {
           {currentStep === 2 ? <Plans /> : null}
           {currentStep === 3 ? <AddOns /> : null}
 
-          {currentStep === 4 ? null : (
+          {currentStep === 5 ? null : (
             <footer className=" absolute w-full p-3 left-0 right-0 bottom-0">
               <div className="flex">
                 <div className="mr-auto">
@@ -78,10 +78,10 @@ const Main = () => {
                 </div>
                 <div className="text-right">
                   <Button
-                    text={currentStep === 3 ? "Confirm" : "Next Step"}
-                    onClick={currentStep === 3 ? submitForm : nextStep}
+                    text={currentStep === 4 ? "Confirm" : "Next Step"}
+                    onClick={currentStep === 4 ? submitForm : nextStep}
                     className={
-                      currentStep === 3
+                      currentStep === 4
                         ? "bg-primary-purplishBlue text-white"
                         : "bg-primary-marineBlue text-white"
                     }
