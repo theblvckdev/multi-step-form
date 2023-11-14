@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { plansData } from "../constants/planData";
 
 export const GlobalContex = createContext();
 
@@ -14,7 +15,7 @@ export const GlobalProvider = ({ children }) => {
   const [monthlyPlan, setMonthlyPlan] = useState(true);
   const [yearlyPlan, setYearlyPlan] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState([]);
-  const [selected, setSelected] = useState({});
+  const [checkedBox, setCheckedBox] = useState(false);
 
   return (
     <GlobalContex.Provider
@@ -41,8 +42,8 @@ export const GlobalProvider = ({ children }) => {
         setYearlyPlan,
         selectedPlan,
         setSelectedPlan,
-        selected,
-        setSelected
+        checkedBox,
+        setCheckedBox,
       }}
     >
       {children}

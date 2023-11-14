@@ -1,11 +1,18 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { plansData } from "../constants/planData";
 import { GlobalContex } from "../context/globalContext";
 
 const Plans = () => {
-  const { monthlyPlan, yearlyPlan, setMonthlyPlan, setYearlyPlan, selectedPlan, setSelectedPlan, selected, setSelected } =
-    useContext(GlobalContex);
-  const [checkedBox, setCheckedBox] = useState(false);
+  const {
+    monthlyPlan,
+    yearlyPlan,
+    setMonthlyPlan,
+    setYearlyPlan,
+    selectedPlan,
+    setSelectedPlan,
+    checkedBox,
+    setCheckedBox,
+  } = useContext(GlobalContex);
 
   const handleCheck = (e) => {
     if (e.target.checked) {
@@ -19,25 +26,23 @@ const Plans = () => {
   };
 
   const selectPlan = (id) => {
-    const planSelected = plansData.find(data => data.id === id);
-    
+    const planSelected = plansData.find((data) => data.id === id);
     setSelectedPlan(planSelected);
-    setSelected(planSelected);
     console.log(selectedPlan);
-  }
+  };
 
   return (
     <>
       <div>
-        <h1 className="text-primary-marineBlue font-bold text-4xl leading-9">
+        <h1 className="text-primary-marineBlue font-bold text-[1.6rem] md:text-4xl leading-9">
           Select your plan
         </h1>
         <h3 className="text-gray-400 mt-2">
           You have the option of monthly or yearly billing.
         </h3>
 
-        <div className="mt-7">
-          <div className="flex gap-4">
+        <div className="md:mt-7 mt-5">
+          <div className="flex md:flex-row flex-col md:gap-4 gap-3">
             {plansData.map((data, index) => {
               const {
                 iconUrl,
@@ -45,15 +50,23 @@ const Plans = () => {
                 monthlyFee,
                 yearlyFee,
                 monthlyFreeTrial,
-                id
+                id,
               } = data;
 
               return (
-                <div key={index} onClick={() => selectPlan(id)} className={selected.id === id ? "p-4 basis-1/3 cursor-pointer duration-700 bg-secondary-alabaster border-primary-purplishBlue rounded-lg border" : "p-4 basis-1/3 cursor-pointer duration-700 hover:border-primary-purplishBlue rounded-lg border border-secondary-lightGray"}>
+                <div
+                  key={index}
+                  onClick={() => selectPlan(id)}
+                  className={
+                    selectPlan.id === id
+                      ? "md:p-4 p-2.5 basis-1/3 cursor-pointer duration-700 bg-secondary-alabaster border-primary-purplishBlue rounded-lg border md:block flex gap-3 items-center"
+                      : "md:p-4 p-2.5 basis-1/3 cursor-pointer duration-700 hover:border-primary-purplishBlue rounded-lg border border-secondary-lightGray md:block flex gap-3 items-center"
+                  }
+                >
                   <div>
                     <img src={iconUrl} alt={title} />
                   </div>
-                  <div className="mt-7">
+                  <div className="md:mt-7 mt-0">
                     <h3 className="text-lg font-medium text-primary-marineBlue">
                       {title}
                     </h3>
@@ -87,6 +100,7 @@ const Plans = () => {
                   <input
                     type="checkbox"
                     value={checkedBox}
+                    checked={checkedBox}
                     onChange={handleCheck}
                     className="sr-only peer"
                   />
