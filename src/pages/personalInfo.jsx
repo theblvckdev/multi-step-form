@@ -54,14 +54,14 @@ const PersonalInfo = () => {
   return (
     <>
       <div>
-        <h1 className="text-primary-marineBlue font-bold text-4xl leading-9">
+        <h1 className="text-primary-marineBlue font-bold text-[1.6rem] md:text-4xl leading-9">
           Personal info
         </h1>
         <h3 className="text-gray-400 mt-2">
           Please provide your name, email address, and phone number.
         </h3>
 
-        <div className="mt-7 space-y-4">
+        <div className="md:mt-7 mt-5 space-y-4">
           <FormControl
             label={"Name"}
             type={"text"}

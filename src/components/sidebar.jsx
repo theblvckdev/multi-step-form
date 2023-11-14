@@ -3,7 +3,26 @@ import { data } from "../constants/sidebarData";
 import { GlobalContex } from "../context/globalContext";
 
 const Sidebar = () => {
-  const { currentStep } = useContext(GlobalContex)
+  const { currentStep, setCurrentStep, name, email, number, setValidName, setValidEmail, setValidNumber } = useContext(GlobalContex)
+
+  const changeStep = (id) => {
+    if (name.length < 1) {
+      setValidName(false);
+    }
+     if (email.length < 1) {
+      setValidEmail(false);
+    }
+     if (number.length < 1) {
+      setValidNumber(false);
+    }
+
+    if (name.length >= 1 && email.length >= 1 && number.length >= 1) {
+      setValidName(true);
+      setValidEmail(true);
+      setValidNumber(true);
+      setCurrentStep(id);
+    }
+  }
 
   return (
     <>
@@ -15,7 +34,7 @@ const Sidebar = () => {
             <div
               key={index}
               className="flex items-center space-x-4 leading-4 sm:mb-8">
-              <div className={`md:w-8 md:h-8 w-10 h-10 rounded-full flex items-center justify-center font-medium ${currentStep === id ? 'border border-primary-lightBlue bg-primary-lightBlue text-primary-marineBlue' : 'border border-primary-lightBlue text-secondary-lightGray' }`}>
+              <div onClick={() => changeStep(id)} className={`md:w-8 cursor-pointer md:h-8 w-10 h-10 rounded-full flex items-center justify-center font-medium ${currentStep === id ? 'border border-primary-lightBlue bg-primary-lightBlue text-primary-marineBlue' : 'border border-primary-lightBlue text-secondary-lightGray' }`}>
                 {id}
               </div>
               <div className="hidden md:block">

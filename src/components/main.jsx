@@ -56,14 +56,14 @@ const Main = () => {
 
   return (
     <>
-      <div className="overflow-hidden w-full">
-        <form action="#" className="mx-16 py-10 relative h-full">
+      <div className="md:overflow-hidden md:shadow-none shadow-md mx-auto md:m-0 rounded-xl md:rounded-none md:w-full w-[100%] md:bg-transparent bg-white z-10 mt-[84px]">
+        <form action="#" className="md:mx-16 md:my-0 mx-6 my-6 py-0 md:py-10 relative h-full">
           {currentStep === 1 ? <PersonalInfo /> : null}
           {currentStep === 2 ? <Plans /> : null}
           {currentStep === 3 ? <AddOns /> : null}
 
           {currentStep === 5 ? null : (
-            <footer className=" absolute w-full p-3 left-0 right-0 bottom-0">
+            <footer className=" absolute md:block hidden w-full p-3 left-0 right-0 bottom-0">
               <div className="flex">
                 <div className="mr-auto">
                   {completed ? (
