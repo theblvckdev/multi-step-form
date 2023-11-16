@@ -28,7 +28,6 @@ const Plans = () => {
   const selectPlan = (id) => {
     const planSelected = plansData.find((data) => data.id === id);
     setSelectedPlan(planSelected);
-    console.log(selectedPlan);
   };
 
   return (
@@ -58,7 +57,7 @@ const Plans = () => {
                   key={index}
                   onClick={() => selectPlan(id)}
                   className={
-                    selectPlan.id === id
+                    selectedPlan.id === id
                       ? "md:p-4 p-2.5 basis-1/3 cursor-pointer duration-700 bg-secondary-alabaster border-primary-purplishBlue rounded-lg border md:block flex gap-3 items-center"
                       : "md:p-4 p-2.5 basis-1/3 cursor-pointer duration-700 hover:border-primary-purplishBlue rounded-lg border border-secondary-lightGray md:block flex gap-3 items-center"
                   }

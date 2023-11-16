@@ -4,7 +4,8 @@ export const addOnsData = [
         title: 'Online service',
         feature: 'Access to multiplayer games',
         monthlyFee: 1,
-        yearlyFee: 10
+        yearlyFee: 10,
+        selected: false
     },
 
     {
@@ -12,7 +13,8 @@ export const addOnsData = [
         title: 'Larger Storage',
         feature: 'Extra 1TB of cloud save',
         monthlyFee: 2,
-        yearlyFee: 20
+        yearlyFee: 20,
+        selected: false
     },
 
     {
@@ -20,6 +22,7 @@ export const addOnsData = [
         title: 'Customizable profile',
         feature: 'Custom theme on your profile',
         monthlyFee: 2,
-        yearlyFee: 20
+        yearlyFee: 20,
+        selected: false
     }
 ]

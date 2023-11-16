@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { addOnsData } from "../constants/addOnsData";
 import { plansData } from "../constants/planData";
 
 export const GlobalContex = createContext();
@@ -14,8 +15,20 @@ export const GlobalProvider = ({ children }) => {
   const [validNumber, setValidNumber] = useState(true);
   const [monthlyPlan, setMonthlyPlan] = useState(true);
   const [yearlyPlan, setYearlyPlan] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState([]);
+  const [selectedPlan, setSelectedPlan] = useState(plansData[0]);
+
+  const getDefaultAddOns = () => {
+    let addOns = {};
+    for (let i = 1; i < addOnsData.length + 1; i++) {
+      addOns[i] = 0
+    }
+
+    return addOns
+  }
+
+  const [selectedAddOn, setSelectedAddOn] = useState(getDefaultAddOns());
   const [checkedBox, setCheckedBox] = useState(false);
+  const [allAddOnsData, setAllAddOnsData] = useState(addOnsData)
 
   return (
     <GlobalContex.Provider
@@ -44,6 +57,10 @@ export const GlobalProvider = ({ children }) => {
         setSelectedPlan,
         checkedBox,
         setCheckedBox,
+        selectedAddOn,
+        setSelectedAddOn,
+        allAddOnsData,
+        setAllAddOnsData,
       }}
     >
       {children}
