@@ -26,10 +26,10 @@ const Main = () => {
     if (name.length < 1) {
       setValidName(false);
     }
-     if (email.length < 1) {
+    if (email.length < 1) {
       setValidEmail(false);
     }
-     if (number.length < 1) {
+    if (number.length < 1) {
       setValidNumber(false);
     }
 
@@ -57,7 +57,10 @@ const Main = () => {
   return (
     <>
       <div className="md:overflow-hidden md:shadow-none shadow-md mx-auto md:m-0 rounded-xl md:rounded-none md:w-full w-[100%] md:bg-transparent bg-white z-10 mt-[84px]">
-        <form action="#" className="md:mx-16 md:my-0 mx-6 my-6 py-0 md:py-10 relative h-full">
+        <form
+          action="#"
+          className="md:mx-16 md:my-0 mx-6 my-6 py-0 md:py-10 relative h-full"
+        >
           {currentStep === 1 ? <PersonalInfo /> : null}
           {currentStep === 2 ? <Plans /> : null}
           {currentStep === 3 ? <AddOns /> : null}
