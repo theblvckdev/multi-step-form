@@ -84,7 +84,7 @@ const Plans = () => {
           </div>
 
           <div className="mt-5">
-            <div className="p-3 rounded-lg bg-gray-50 flex justify-center">
+            <div className="p-3 rounded-lg bg-secondary-alabaster flex justify-center">
               <div className="flex gap-3 items-center justify-center">
                 <div
                   className={

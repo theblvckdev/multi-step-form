@@ -20,15 +20,38 @@ export const GlobalProvider = ({ children }) => {
   const getDefaultAddOns = () => {
     let addOns = {};
     for (let i = 1; i < addOnsData.length + 1; i++) {
-      addOns[i] = 0
+      addOns[i] = 0;
     }
 
-    return addOns
-  }
+    return addOns;
+  };
 
   const [selectedAddOn, setSelectedAddOn] = useState(getDefaultAddOns());
   const [checkedBox, setCheckedBox] = useState(false);
-  const [allAddOnsData, setAllAddOnsData] = useState(addOnsData)
+  const [allAddOnsData, setAllAddOnsData] = useState(addOnsData);
+  const [formCompeleted, setFormCompeleted] = useState(false);
+
+  let comparison = monthlyPlan
+    ? selectedPlan.monthlyFee
+    : selectedPlan.yearlyFee;
+
+  const getTotalAmount = () => {
+    let addOnsTotalAmount = 0;
+    let totalAmount = 0;
+    for (const item in selectedAddOn) {
+      if (selectedAddOn[item] > 0) {
+        let itemInfo = addOnsData.find((addOn) => addOn.id === Number(item));
+        addOnsTotalAmount +=
+          selectedAddOn[item] * monthlyPlan
+            ? itemInfo.monthlyFee
+            : itemInfo.yearlyFee;
+
+        totalAmount = addOnsTotalAmount + comparison;
+      }
+    }
+
+    return totalAmount;
+  };
 
   return (
     <GlobalContex.Provider
@@ -61,6 +84,9 @@ export const GlobalProvider = ({ children }) => {
         setSelectedAddOn,
         allAddOnsData,
         setAllAddOnsData,
+        getTotalAmount,
+        formCompeleted,
+        setFormCompeleted
       }}
     >
       {children}

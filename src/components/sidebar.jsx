@@ -3,7 +3,7 @@ import { data } from "../constants/sidebarData";
 import { GlobalContex } from "../context/globalContext";
 
 const Sidebar = () => {
-  const { currentStep, setCurrentStep, name, email, number, setValidName, setValidEmail, setValidNumber } = useContext(GlobalContex)
+  const { currentStep, setCurrentStep, name, email, number, setValidName, setValidEmail, setValidNumber, setFormCompeleted } = useContext(GlobalContex)
 
   const changeStep = (id) => {
     if (name.length < 1) {
@@ -22,6 +22,7 @@ const Sidebar = () => {
       setValidNumber(true);
       setCurrentStep(id);
     }
+    setFormCompeleted(false)
   }
 
   return (

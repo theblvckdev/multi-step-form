@@ -4,6 +4,7 @@ import Plans from "../pages/plans";
 import AddOns from "../pages/addOns";
 import { GlobalContex } from "../context/globalContext";
 import Button from "../utils/button";
+import Summary from "../pages/summary";
 
 const Main = () => {
   const {
@@ -17,6 +18,8 @@ const Main = () => {
     setValidName,
     setValidEmail,
     setValidNumber,
+    setFormCompeleted,
+    formCompeleted
   } = useContext(GlobalContex);
   currentStep === 1 ? setCompleted(false) : setCompleted(true);
 
@@ -50,13 +53,12 @@ const Main = () => {
   const submitForm = (e) => {
     e.preventDefault();
 
-    console.log("submitted");
-    setCurrentStep(4);
+    setFormCompeleted(true);
   };
 
   return (
     <>
-      <div className="md:overflow-hidden md:shadow-none shadow-md mx-auto md:m-0 rounded-xl md:rounded-none md:w-full w-[100%] md:bg-transparent bg-white z-10 mt-[84px]">
+      <div className="md:overflow-hidden md:min-h-full md:shadow-none shadow-md mx-auto md:m-0 rounded-xl md:rounded-none md:w-full w-[100%] md:bg-transparent min-h-[400px] bg-white z-10 mt-[84px]">
         <form
           action="#"
           className="md:mx-16 md:my-0 mx-6 my-6 py-0 md:py-10 relative h-full"
@@ -64,8 +66,9 @@ const Main = () => {
           {currentStep === 1 ? <PersonalInfo /> : null}
           {currentStep === 2 ? <Plans /> : null}
           {currentStep === 3 ? <AddOns /> : null}
+          {currentStep === 4 ? <Summary /> : null}
 
-          {currentStep === 5 ? null : (
+          {formCompeleted ? null : (
             <footer className=" absolute md:block hidden w-full p-3 left-0 right-0 bottom-0">
               <div className="flex">
                 <div className="mr-auto">
