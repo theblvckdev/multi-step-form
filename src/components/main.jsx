@@ -19,7 +19,7 @@ const Main = () => {
     setValidEmail,
     setValidNumber,
     setFormCompeleted,
-    formCompeleted
+    formCompeleted,
   } = useContext(GlobalContex);
   currentStep === 1 ? setCompleted(false) : setCompleted(true);
 
@@ -70,6 +70,35 @@ const Main = () => {
 
           {formCompeleted ? null : (
             <footer className=" absolute md:block hidden w-full p-3 left-0 right-0 bottom-0">
+              <div className="flex">
+                <div className="mr-auto">
+                  {completed ? (
+                    <Button
+                      text={"Go Back"}
+                      onClick={goBack}
+                      className={
+                        "bg-transparent text-gray-400 hover:text-primary-marineBlue"
+                      }
+                    />
+                  ) : null}
+                </div>
+                <div className="text-right">
+                  <Button
+                    text={currentStep === 4 ? "Confirm" : "Next Step"}
+                    onClick={currentStep === 4 ? submitForm : nextStep}
+                    className={
+                      currentStep === 4
+                        ? "bg-primary-purplishBlue text-white"
+                        : "bg-primary-marineBlue text-white"
+                    }
+                  />
+                </div>
+              </div>
+            </footer>
+          )}
+
+          {formCompeleted ? null : (
+            <footer className="fixed bg-white md:hidden block w-full p-3 left-0 right-0 bottom-0">
               <div className="flex">
                 <div className="mr-auto">
                   {completed ? (
